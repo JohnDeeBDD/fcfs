@@ -1,0 +1,13 @@
+<?php
+$I = new AcceptanceTester($scenario);
+$I->wantTo('See that the pro version works');
+
+$scenario->incomplete('TODO');
+
+/*
+ * Given there is a pro and a free version
+ * And given that the difference is that in the pro version, the user can migrate many posts
+ * And given that to migrate a post requires many steps
+ * Then in the free version the many steps will be controlled from the browser
+ * And in the pro version, the many step will be controlled by the remote migrate-posts server
+ */
