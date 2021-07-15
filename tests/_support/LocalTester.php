@@ -16,13 +16,11 @@
  *
  * @SuppressWarnings(PHPMD)
 */
-class UnitTester extends \Codeception\Actor
+class LocalTester extends \Codeception\Actor
 {
-    use _generated\UnitTesterActions;
+    use _generated\LocalTesterActions;
 
-	public function __construct()
-   {
-       require_once('/var/www/html/wp-content/plugins/fcfs/src/FCFS/autoloader.php');
-   }
-
+    /**
+     * Define custom actions here
+     */
 }

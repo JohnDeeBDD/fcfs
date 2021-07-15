@@ -2,12 +2,12 @@
 
 namespace MigratePosts;
 
-class Page_Tools_MigratePosts{
+class Page_FCFS{
 
     public function enable(){
         //this command puts the settings page on the WordPress admin menu:
         add_action( 'admin_menu', array($this, 'addMenuPage' ));
-        add_action("admin_enqueue_scripts", [$this, "enqueueSettingsPageJS"]);
+   //     add_action("admin_enqueue_scripts", [$this, "enqueueSettingsPageJS"]);
     }
 
     public function enqueueSettingsPageJS(){
