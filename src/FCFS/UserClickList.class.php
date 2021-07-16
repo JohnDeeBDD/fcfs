@@ -3,6 +3,12 @@
 namespace FCFS;
 
 class UserClickList{
+//public function enableShortcode_FCFS(){}
+
+	public function doReturnShortcode_FCFS(){
+		
+		return "1. Someuser";	
+	}
 
 	public function returnHTML(){
 		$output = "<ul>";

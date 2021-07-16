@@ -9,7 +9,31 @@ class Action_VisitPageTest extends \Codeception\TestCase\WPTestCase {
 	public function itShouldBeInstantiable() {
 		$Action = new \FCFS\Action_VisitFCFS_Page();
 	}
+	
+	 /**
+	  * @test
+	  * it should record a timestamp when the user visits the page
+	  */
+	  public function itShouldRecordATimestampWhenTheUserVisitsThePage(){
+	  	//Given there is a valid FCFS post:
+	    $data = ['post_title'    => "test"];
+        $postID = wp_insert_post( $data );
+        //And the admin has dsignated it FCFS
+        $Action = new \FCFS\Action_MakeFCFS;
+        $Action->makeFCFS($postID);
+	  
+	    //When user visists the page at a particular time:
+		$userID = 123;
+	  	$time = 567;
+	  	$key = "fcfs-" . $userID;
+	  	$Action = new \FCFS\Action_VisitFCFS_Page();
+	  	$time = time();
+	  	$Action->doAction($userID, $postID, $time);
+	  	
+		//Then a valid timestamp should be recorded as post meta
+		$result = get_post_meta( $postID, $key, true);
+		$this->assertNotFalse($result);
+	  }
+	  
+	  
 }
-
-// bin/codecept run unit -vvv --html
-// cd /var/www/html/wp-content/plugins/fcfs

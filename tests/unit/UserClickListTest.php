@@ -9,6 +9,32 @@ class UserClickListTest extends \Codeception\TestCase\WPTestCase {
 		$Manifest = new \FCFS\UserClickList();
 	}
 	
+	/**
+	 * @test
+	 * it should output the list via a shortcode
+	 */
+	public function itShouldOutputTheListViaAShortcode(){
+		//Given there is a post:
+	    $data = [
+	    	'post_title'    => "test",
+	    	'post_content'  => "[FCFS]"
+	    ];
+        $postID = wp_insert_post( $data );
+
+		//and a user:
+		$userID = $this->factory->user->create( array( 'user_email' => "test@email.com",'user_login' => 'Someuser', 'role' => 'administrator' ) );
+		wp_set_current_user( $userID );
+		
+		//When the user visits the page:
+		$Clicklist = new \FCFS\UserClickList;
+		$result = $Clicklist->doReturnClicklist($postID);
+		
+		//Then the clicklist should contian the user's screename
+		$expectedResult = "1. Someuser";
+		
+		$this->assertEquals($expectedResult, $result);
+	}
+	
 	
 	/**
 	 * @test
