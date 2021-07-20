@@ -27,5 +27,4 @@ class Action_MakeFCFSTest extends \Codeception\TestCase\WPTestCase {
 	    $this->assertTrue( $result );
 	 }
 	 
-
 }

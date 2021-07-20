@@ -28,7 +28,7 @@ class Page_FCFS{
 
     private function returnContentView(){
     	$UserClickList = new UserClickList();
-		return $UserClickList->returnFrontEndHTML();
+		return $UserClickList->returnHTML();
     }
 
 
