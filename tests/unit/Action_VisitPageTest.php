@@ -15,10 +15,11 @@ class Action_VisitPageTest extends \Codeception\TestCase\WPTestCase {
 	  * it should record a timestamp when the user visits the page
 	  */
 	  public function itShouldRecordATimestampWhenTheUserVisitsThePage(){
-	  	//Given there is a valid FCFS post:
+	  	//Given there is a post:
 	    $data = ['post_title'    => "test"];
         $postID = wp_insert_post( $data );
-        //And the admin has dsignated it FCFS
+        
+        //And the admin has dsignated it FCFS:
         $Action = new \FCFS\Action_MakeFCFS;
         $Action->makeFCFS($postID);
 	  
@@ -27,12 +28,14 @@ class Action_VisitPageTest extends \Codeception\TestCase\WPTestCase {
 	  	$time = 567;
 	  	$key = "fcfs-" . $userID;
 	  	$Action = new \FCFS\Action_VisitFCFS_Page();
-	  	$time = time();
+	  	//$time = time();
 	  	$Action->doAction($userID, $postID, $time);
 	  	
 		//Then a valid timestamp should be recorded as post meta
 		$result = get_post_meta( $postID, $key, true);
-		$this->assertNotFalse($result);
+		
+		$expectedResult = $time;
+		$this->assertEquals($expectedResult, $result);
 	  }
 	  
 	  
