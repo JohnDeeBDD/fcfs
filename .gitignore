@@ -2,3 +2,4 @@
 /tests/acceptance.yml
 /tests/_output/
 composer.lock
+/.idea/
