@@ -1,6 +1,6 @@
 <?php
 
-include_once("/var/www/html/wp-conten/plugins/fcfs/src/fcfs/autoloader.php");
+include_once("/var/www/html/wp-content/plugins/fcfs/src/FCFS/autoloader.php");
 class Action_VisitPageTest extends \Codeception\TestCase\WPTestCase {
 	/**
 	 * @test
