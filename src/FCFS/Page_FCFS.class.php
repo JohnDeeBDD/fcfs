@@ -4,19 +4,6 @@ namespace FCFS;
 
 class Page_FCFS{
 
-    /*
-     public function enqueueSettingsPageJS(){
-        wp_register_script(
-            'migrate-posts-settings-page',
-            plugin_dir_url(__FILE__) . 'settings-page.js', // here is the JS file
-            ['jquery', 'wp-api'],
-            '1.0',
-            true
-        );
-        wp_enqueue_script('migrate-posts-settings-page');
-    }
-    */
-
     public function enable() {
 	        \add_menu_page(  'FCFS', 'FCFS','edit_posts', "fcfs", array($this, "renderPage"));
     }
@@ -44,5 +31,28 @@ class Page_FCFS{
 </div><!-- end: .wrap -->
 OUTPUT;
         echo $output;
+        $IDs= $this->returnArrayFCFS_Posts();
+        var_dump($IDs);
+    }
+
+    public function returnArrayFCFS_Posts(){
+    	$postIDs = [];
+	    $args = array(
+		    'post_status' => 'any',
+		    'meta_query' => array(
+			    array(
+				    'key' => 'fcfs',
+			    ),
+		    ),
+	    );
+        $the_query = new \WP_Query($args);
+        if ($the_query->have_posts()){
+            while ( $the_query->have_posts() ) {
+                $the_query->the_post();
+				$ID = get_the_ID();
+                array_push($postIDs, $ID);
+            }
+        }
+        return $postIDs;
     }
 }

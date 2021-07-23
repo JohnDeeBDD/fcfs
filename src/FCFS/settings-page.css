@@ -1,0 +1,28 @@
+.wp-heading-inline{display:none}
+.post-type-fcfs .tablenav.top .actions {
+    display: none;
+}
+.post-type-fcfs li.publish {
+    display: none;
+}
+.post-type-fcfs p.search-box {
+    display: none;
+}
+.post-type-fcfs .tablenav.bottom {
+    display: none;
+}
+.current{
+    display: none;
+}
+.subsubsub{
+    display: none;
+}
+.post-type-fcfs .column-title .row-actions .inline {
+    display: none;
+}
+.post-type-fcfs .column-title .row-actions .view {
+    display: none;
+}
+.post-type-fcfs #the-list{
+    display: none;
+}

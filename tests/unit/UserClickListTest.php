@@ -59,12 +59,15 @@ class UserClickListTest extends WPTestCase {
 	public function edgeCase_NoUsersTest() {
 		//Given there is a mock post with no clicks
 		$postID  = $this->createMockPost();
+		$Action = new Action_MakeFCFS();
+		$Action->makeFCFS($postID);
 
 		//When the method returnArrayOfUserNames is called
 		$ClickList = new UserClickList();
 
 		//Then it should return "No users yet"
-		$expected = [ "No users yet" ];
+		$expected = "No users yet";
+		//not just a string! $expected = "No users yet";
 		$given    = $ClickList->returnArrayOfUserNames( $postID );
 
 		$this->assertEquals( $expected, $given );
@@ -92,7 +95,7 @@ class UserClickListTest extends WPTestCase {
 		$ClickList = new UserClickList();
 
 		//Then it should return "Not an FCFS post"
-		$expected = [ "ERROR: Not an FCFS post" ];
+		$expected = "ERROR: Not an FCFS post";
 		$given    = $ClickList->returnArrayOfUserNames( $postID );
 
 		$this->assertEquals( $expected, $given );
