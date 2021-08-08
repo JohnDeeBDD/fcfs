@@ -21,7 +21,7 @@ class Action_VisitPageTest extends \Codeception\TestCase\WPTestCase {
         
         //And the admin has dsignated it FCFS:
         $Action = new \FCFS\Action_MakeFCFS;
-        $Action->makeFCFS($postID);
+        $Action->doMakeFCFS($postID);
 	  
 	    //When user visists the page at a particular time:
 		$userID = 123;
@@ -50,7 +50,7 @@ class Action_VisitPageTest extends \Codeception\TestCase\WPTestCase {
 		];
 		$postID = wp_insert_post( $data );
 		$Action = new \FCFS\Action_MakeFCFS();
-		$Action->makeFCFS($postID);
+		$Action->doMakeFCFS($postID);
 		
 		//And the page is NOT opened
 		//In this case we will NOT open the post!

@@ -7,8 +7,11 @@ class Shortcode_FCFS{
     public function doReturnShortcode(){
         global $post;
         $postID = $post->ID;
+        $Action = new Action_VisitFCFS_Page;
+        //die("doReturnShortcode");
+        $Action->listenForVisit();
         $output = $this->returnHTML($postID);
-        $output = $output . $this->returnJS($postID);
+        //$output = $output . $this->returnJS($postID);
         return $output;
     }
     
@@ -24,7 +27,10 @@ OUTPUT;
     public function returnHTML($postID){
         $List = new UserClickList();
         $names = $List->returnArrayOfUserNames($postID);
-        
+        //var_dump($names);die(" names");
+        if($names == "ERROR: Not an FCFS post"){
+        	return;
+        }
         if($names == "No users yet"){
             return $names;
         }

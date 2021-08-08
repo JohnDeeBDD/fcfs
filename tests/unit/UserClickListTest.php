@@ -60,7 +60,8 @@ class UserClickListTest extends WPTestCase {
 		//Given there is a mock post with no clicks
 		$postID  = $this->createMockPost();
 		$Action = new Action_MakeFCFS();
-		$Action->makeFCFS($postID);
+		$Action->postID = $postID;
+		$Action->doMakeFCFS();
 
 		//When the method returnArrayOfUserNames is called
 		$ClickList = new UserClickList();
@@ -109,7 +110,7 @@ class UserClickListTest extends WPTestCase {
 		];
 		$postID = wp_insert_post( $data );
 		$Action = new Action_MakeFCFS;
-		$Action->makeFCFS( $postID );
+		$Action->doMakeFCFS( $postID );
 
 		return ( $postID );
 	}

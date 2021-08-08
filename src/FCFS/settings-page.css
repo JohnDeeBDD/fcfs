@@ -23,6 +23,9 @@
 .post-type-fcfs .column-title .row-actions .view {
     display: none;
 }
-.post-type-fcfs #the-list{
+.wp-list-table{
+    display: none;
+}
+.page-title-action{
     display: none;
 }

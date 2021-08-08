@@ -24,7 +24,7 @@ class Action_OpenCloseFCFSTest extends \Codeception\TestCase\WPTestCase {
 		
 		//And the post is an FCFS post:
 		$Action = new \FCFS\Action_MakeFCFS();
-		$Action->makeFCFS($postID);
+		$Action->doMakeFCFS($postID);
 		
 		//When the method doMakeFCFS_postOpen is called:		
 		$Action2 = new \FCFS\Action_OpenCloseFCFS();
@@ -50,7 +50,7 @@ class Action_OpenCloseFCFSTest extends \Codeception\TestCase\WPTestCase {
 		
 		//And the post is an FCFS post:
 		$Action = new \FCFS\Action_MakeFCFS();
-		$Action->makeFCFS($postID);
+		$Action->doMakeFCFS($postID);
 		
 		//When the method doMakeFCFS_postOClosed is called:		
 		$Action2 = new \FCFS\Action_OpenCloseFCFS();
